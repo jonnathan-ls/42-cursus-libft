@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:46:38 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/10 20:20:57 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:29:01 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void *ft_memcpy(void *dest, const void *src, unsigned long n);
 void *ft_memmove(void *dest, const void *src, unsigned long n);
 int	ft_memcmp(const void *s1, const void *s2, unsigned long n);
 int	ft_strncmp(const char *s1, const char *s2, unsigned long n);
+unsigned long	ft_strlcat(char *dst, const char *src, unsigned long size);
 unsigned long	ft_strlcpy(char *dst, const char *src, unsigned long size);
 
 #endif
