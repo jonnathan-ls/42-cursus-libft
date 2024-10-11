@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:46:38 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/10 20:57:35 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/10 21:14:08 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_strrchr(const char *s, int c);
 void	ft_bzero(void *s, unsigned long n);
 void	*ft_memset(void *s, int c, unsigned long n);
 void	*ft_memchr(const void *s, int c, unsigned long n);
+void	*ft_calloc(unsigned long nmemb, unsigned long size);
 void *ft_memcpy(void *dest, const void *src, unsigned long n);
 void *ft_memmove(void *dest, const void *src, unsigned long n);
 int	ft_memcmp(const void *s1, const void *s2, unsigned long n);
