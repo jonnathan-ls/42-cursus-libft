@@ -1,0 +1,57 @@
+Para criar um Makefile que não relink (ou seja, não recompila o executável se ele já estiver atualizado), você pode usar uma abordagem simples. Aqui está um exemplo básico:
+
+makefile
+Copiar código
+# Nome do executável
+TARGET = meu_programa
+
+# Diretórios de origem e objeto
+SRC_DIR = src
+OBJ_DIR = obj
+
+# Extensões de arquivos
+SRC_EXT = .c
+OBJ_EXT = .o
+
+# Flags de compilação
+CFLAGS = -Wall -Wextra -Werror
+
+# Listando os arquivos fonte
+SRCS = $(wildcard $(SRC_DIR)/*$(SRC_EXT))
+# Gerando a lista de arquivos objeto a partir dos fontes
+OBJS = $(patsubst $(SRC_DIR)/*$(SRC_EXT), $(OBJ_DIR)/%$(OBJ_EXT), $(SRCS))
+
+# Regra principal
+$(TARGET): $(OBJS)
+	@echo "Linking..."
+	@cc -o $@ $^
+
+# Regra para compilar os arquivos objeto
+$(OBJ_DIR)/%$(OBJ_EXT): $(SRC_DIR)/%$(SRC_EXT)
+	@mkdir -p $(OBJ_DIR)
+	@echo "Compiling $<..."
+	@cc $(CFLAGS) -c $< -o $@
+
+# Limpeza
+.PHONY: clean
+clean:
+	rm -f $(OBJ_DIR)/*$(OBJ_EXT) $(TARGET)
+
+# Para evitar relink, use uma regra 'phony'
+.PHONY: all
+all: $(TARGET)
+
+# Para verificar se a compilação é necessária
+# Se o executável já existir e não houver arquivos fonte ou objeto novos, ele não será recriado.
+
+Explicação:
+
+TARGET: Define o nome do executável.
+SRC_DIR e OBJ_DIR: Especificam os diretórios de origem e objeto.
+SRCS e OBJS: Listam os arquivos fonte e geram a lista de arquivos objeto correspondentes.
+Regra principal: Define como gerar o executável a partir dos objetos. O @echo é usado para exibir mensagens sem mostrar o comando real.
+Regra de compilação: Compila os arquivos fonte em objetos. O mkdir -p $(OBJ_DIR) garante que o diretório de objetos exista antes de compilar.
+Limpeza: Uma regra para remover arquivos objetos e o executável.
+Regra all: Para garantir que a construção padrão é o executável.
+Evitar relink: A condição para evitar relink é que o Makefile só tentará recriar o executável se algum arquivo objeto for mais recente que o executável.
+Com esse Makefile, você evita a recompilação desnecessária do executável se não houver alterações nos arquivos fonte.
