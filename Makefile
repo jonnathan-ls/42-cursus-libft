@@ -29,3 +29,8 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+test:	all
+	$(CC) $(CFLAGS) tests/*.c -L. -lft -o test
+	./test
+	rm -f test
