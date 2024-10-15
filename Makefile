@@ -2,11 +2,9 @@
 # Email: jlacerda@student.42.fr
 
 NAME = libft.a
-SOURCE_DIR = srcs
-INCLUDES_DIR = includes
 
-SOURCES = $(wildcard $(SOURCE_DIR)/*.c)
-INCLUDES = -I $(INCLUDES_DIR)
+SOURCES = $(wildcard ./*.c)
+INCLUDES = -I libft.h
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = cc
