@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 19:43:57 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/16 20:15:28 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/16 20:22:18 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned long	i;
-	unsigned long	s1_size;
-	unsigned long	s2_size;
-	char			*joined_str;
+	size_t	i;
+	size_t	s1_size;
+	size_t	s2_size;
+	char	*joined_str;
 
 	i = 0;
 	s1_size = ft_strlen(s1);

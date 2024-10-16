@@ -6,13 +6,15 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/08 20:32:21 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/16 20:26:39 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, unsigned long n)
+#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned long	i;
+	size_t			i;
 	unsigned char	*ptr;
 
 	i = 0;
@@ -23,5 +25,5 @@ void	*ft_memchr(const void *s, int c, unsigned long n)
 			return ((void *)&ptr[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

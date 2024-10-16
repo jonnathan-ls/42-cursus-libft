@@ -6,14 +6,16 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:00:15 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/10 20:43:42 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/16 20:32:36 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(const char *big, const char *little, unsigned long len)
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned long	i;
-	unsigned long	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	if (!*little)
@@ -27,5 +29,5 @@ char	*ft_strnstr(const char *big, const char *little, unsigned long len)
 			return ((char *)&big[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
