@@ -6,22 +6,24 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/08 20:16:01 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/16 20:18:36 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*last;
+	int index;
 
-	last = 0;
-	while (*s)
+	index = ft_strlen(s);
+	while (index > 0)
 	{
-		if (*s == c)
-			last = (char *)s;
-		s++;
+		if (s[index] == (char)c)
+			return ((char *)s + index);
+		index--;
 	}
-	if (c == '\0')
-		return ((char *)s);
-	return (last);
+	if (s[index] == (char)c)
+		return ((char *)s + index);
+	return (NULL);
 }
