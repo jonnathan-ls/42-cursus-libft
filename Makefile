@@ -4,7 +4,7 @@
 NAME = libft.a
 
 SOURCES = $(wildcard ./*.c)
-INCLUDES = -I libft.h
+INCLUDES = -I .
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = cc
