@@ -12,43 +12,37 @@
 
 #include "test.h"
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned long n);
+static bool	all_tests_passed = true;
 
-bool	exectute_test(char *str1, char *str2, unsigned long n)
+static void	run_test_case(char *str1, char *str2, int n)
 {
 	int		result;
 	int		expected;
-	bool	is_equal;
 
-	result = strncmp(str1, str2, n);
-	expected = ft_strncmp(str1, str2, n);
-	is_equal = (result == expected);
-	if (!is_equal)
+	result = ft_strncmp(str1, str2, n);
+	expected = strncmp(str1, str2, n);
+	if (result != expected)
 	{
+		all_tests_passed = false;
 		printf("\t🔴 [FT_STRNCMP]: ");
-		printf("Test failed with value %s & %s & %lu ", str1, str2, n);
+		printf("Test failed with value %s & %s & %i ", str1, str2, n);
 		printf("=> ft_strncmp: %d & strncmp: %d\n", result, expected);
 	}
-	return (is_equal);
 }
 
 void	ft_strncmp_test(void)
 {
-	bool	all_tests_passed;
-
 	all_tests_passed = true;
-	if (!exectute_test("Hello", "Hello", 5))
-		all_tests_passed = false;
-	if (!exectute_test("Hello", "World", 3))
-		all_tests_passed = false;
-	if (!exectute_test("Hello", "Hell", 5))
-		all_tests_passed = false;
-	if (!exectute_test("Hello", "Hello", 0))
-		all_tests_passed = false;
-	if (!exectute_test("Hello", "", 7))
-		all_tests_passed = false;
-	if (!exectute_test("", "hELLO", 3))
-		all_tests_passed = false;
+	run_test_case("Hello", "Hello", 5);
+	run_test_case("Hello", "Hello", 42);
+	run_test_case("Hello", "World", 3);
+	run_test_case("Hello", "Hell", 99);
+	run_test_case("Hello", "Hello", 0);
+	run_test_case("Hello", "", 7);
+	run_test_case("", "Hello", 3);
+	run_test_case("Hello", "Hello", -42);
+	run_test_case("", "", 0);
+	run_test_case("", "", 10);
 	if (all_tests_passed)
 		printf("\t✅ all tests passed for ft_strncmp\n");
 }
