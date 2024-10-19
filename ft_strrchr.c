@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/08 20:39:49 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/16 20:27:32 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, unsigned long n)
-{
-	unsigned long	i;
-	char			*ptr;
+#include "libft.h"
 
-	i = 0;
-	ptr = (char *)s;
-	while (i < n)
+char	*ft_strrchr(const char *s, int c)
+{
+	int	index;
+
+	index = ft_strlen(s);
+	while (index > 0)
 	{
-		ptr[i] = '\0';
-		i++;
+		if (s[index] == (char)c)
+			return ((char *)s + index);
+		index--;
 	}
+	if (s[index] == (char)c)
+		return ((char *)s + index);
+	return (NULL);
 }

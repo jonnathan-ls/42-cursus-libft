@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 20:00:15 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/10 20:11:13 by jlacerda         ###   ########.fr       */
+/*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
+/*   Updated: 2024/10/16 20:26:38 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memmove(void *dest, const void *src, unsigned long n)
-{
-	unsigned char	*ptr_dest;
-	unsigned char	*ptr_src;
-	unsigned long	i;
+#include <stdlib.h>
 
-	ptr_dest = (unsigned char *)dest;
-	ptr_src = (unsigned char *)src;
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	size_t			i;
+	unsigned char	*ptr;
+
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
 	i = 0;
-	if (ptr_dest < ptr_src)
+	while (i < nmemb * size)
 	{
-		while (i < n)
-		{
-			ptr_dest[i] = ptr_src[i];
-			i++;
-		}
+		ptr[i] = 0;
+		i++;
 	}
-	else
-	{
-		while (n--)
-			ptr_dest[n] = ptr_src[n];
-	}
-	return (dest);
+	return (ptr);
 }

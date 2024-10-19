@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 20:00:15 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/10 20:43:42 by jlacerda         ###   ########.fr       */
+/*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
+/*   Updated: 2024/10/16 20:25:10 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(const char *big, const char *little, unsigned long len)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned long	i;
-	unsigned long	j;
+	size_t	i;
+	char	*ptr;
 
 	i = 0;
-	if (!*little)
-		return ((char *)big);
-	while (big[i] && i < len)
+	ptr = (char *)s;
+	while (i < n)
 	{
-		j = 0;
-		while (big[i + j] == little[j] && little[j] && i + j < len)
-			j++;
-		if (!little[j])
-			return ((char *)&big[i]);
+		ptr[i] = c;
 		i++;
 	}
-	return (0);
+	return (s);
 }

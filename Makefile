@@ -2,12 +2,13 @@
 # Email: jlacerda@student.42.fr
 
 NAME = libft.a
-SOURCE_DIR = srcs
-INCLUDES_DIR = includes
 
-SOURCES = $(wildcard $(SOURCE_DIR)/*.c)
-INCLUDES = -I $(INCLUDES_DIR)
+SOURCES = $(wildcard ./*.c)
+INCLUDES = -I .
 OBJECTS = $(SOURCES:.c=.o)
+
+BONUS_SOURCES = $(wildcard ./*_bonus.c)
+BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -20,13 +21,16 @@ $(NAME): $(OBJECTS)
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+bonus: $(BONUS_OBJECTS)
+	ar rcs $(NAME) $(BONUS_OBJECTS)
+
 clean:
 	rm -f $(OBJECTS)
 
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean all bonus
 
 .PHONY: all clean fclean re
 
