@@ -33,6 +33,7 @@ void	ft_putendl_fd(char *s, int fd);
 char	*ft_strchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
 char	*ft_strrchr(const char *s, int c);
+char	**ft_split(char const *s, char c);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -48,6 +49,15 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+
+typedef struct s_split_params
+{
+	char	**array;
+	int		s_index;
+	int		word_len;
+	int		arr_index;
+	int		word_index;
+}	t_split_params;
 
 // BONUS
 typedef struct s_list
