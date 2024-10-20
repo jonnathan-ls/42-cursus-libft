@@ -38,3 +38,4 @@ test:	all
 	$(CC) $(CFLAGS) tests/*.c -L. -lft -o test
 	./test
 	rm -f test
+	
