@@ -15,6 +15,10 @@
 void	ft_isdigit_test(void);
 void	ft_isalpha_test(void);
 void	ft_strncmp_test(void);
+void	ft_bzero_test(void);
+void ft_atoi_test(void);
+void ft_calloc_test(void);
+void ft_isalnum_test(void);
 
 int	main(void)
 {
@@ -22,6 +26,10 @@ int	main(void)
 	ft_isalpha_test();
 	ft_isdigit_test();
 	ft_strncmp_test();
+	ft_bzero_test();
+	ft_atoi_test();
+	ft_calloc_test();
+	ft_isalnum_test();
 	printf("\n");
 	return (0);
 }

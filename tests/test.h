@@ -19,6 +19,7 @@
 # include <assert.h>
 # include <limits.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 
 int		ft_isalpha(int c);
