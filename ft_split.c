@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/21 18:49:08 by jlacerda          #+#    #+#             */
+/*   Updated: 2024/10/21 18:56:11 by jlacerda         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_count_words(char const *s, char c)
@@ -31,7 +43,7 @@ static void	ft_free_array(char **array, int array_index)
 	free(array);
 }
 
-static char	*ft_malloc_word_in_array(char const *s, char c, size_t *index)
+static char	*ft_put_word(char const *s, char c, size_t *index)
 {
 	size_t	len;
 	char	*word;
@@ -58,7 +70,7 @@ static int	ft_fill_array(char const *s, char c, char **array)
 	{
 		if (s[index] != c)
 		{
-			array[array_index] = ft_malloc_word_in_array(s, c, &index);
+			array[array_index] = ft_put_word(s, c, &index);
 			if (!array[array_index])
 			{
 				ft_free_array(array, array_index - 1);

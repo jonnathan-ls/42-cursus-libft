@@ -6,14 +6,16 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 20:44:31 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/16 23:00:41 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:51:16 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	convert_number(char *str, int n, int index)
+static void	convert_number(char *str, int n, int index, int sign)
 {
+	str[index] = '\0';
+	index--;
 	while (index >= 0)
 	{
 		if (n < 0)
@@ -28,6 +30,8 @@ static void	convert_number(char *str, int n, int index)
 		}
 		index--;
 	}
+	if (sign == -1)
+		str[0] = '-';
 }
 
 char	*ft_itoa(int n)
@@ -40,9 +44,7 @@ char	*ft_itoa(int n)
 	index = 0;
 	sign = 1;
 	if (n == 0)
-	{
 		index++;
-	}
 	if (n < 0)
 	{
 		index++;
@@ -56,12 +58,7 @@ char	*ft_itoa(int n)
 		index++;
 	}
 	str = (char *)malloc(sizeof(char) * index + 1);
-	if (str == NULL)
-		return (NULL);
-	str[index] = '\0';
-	index--;
-	convert_number(str, n, index);
-	if (sign == -1)
-		str[0] = '-';
+	if (str)
+		convert_number(str, n, index, sign);
 	return (str);
 }
