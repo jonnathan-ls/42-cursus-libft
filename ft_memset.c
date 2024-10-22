@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/21 17:11:09 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/21 21:17:22 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*ptr;
 
 	i = 0;
