@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/08 20:05:43 by jlacerda         ###   ########.fr       */
+/*   Created: 2024/10/10 21:20:23 by jlacerda          #+#    #+#             */
+/*   Updated: 2024/10/21 18:45:34 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
-{
-	int	isalpha;
-	int	isdigit;
+#include "libft.h"
 
-	isalpha = ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
-	isdigit = (c >= 48 && c <= 57);
-	return (isalpha || isdigit);
+char	*ft_strdup(const char *src)
+{
+	int		src_size;
+	char	*str_cpy;
+
+	src_size = ft_strlen(src);
+	str_cpy = (char *)malloc(src_size + 1);
+	if (str_cpy != NULL)
+	{
+		ft_strlcpy(str_cpy, src, src_size + 1);
+	}
+	return (str_cpy);
 }
