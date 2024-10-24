@@ -6,7 +6,7 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:46:38 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/16 20:31:01 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/21 22:08:48 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+char	*ft_itoa(int n);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
@@ -49,17 +50,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-
-typedef struct s_split_params
-{
-	char	**array;
-	int		s_index;
-	int		word_len;
-	int		arr_index;
-	int		word_index;
-}	t_split_params;
-
-// BONUS
 typedef struct s_list
 {
 	void			*content;

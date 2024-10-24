@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/21 18:49:08 by jlacerda          #+#    #+#             */
+/*   Updated: 2024/10/21 18:56:11 by jlacerda         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_count_words(char const *s, char c)
@@ -21,63 +33,70 @@ static int	ft_count_words(char const *s, char c)
 	return (count);
 }
 
-static int	ft_word_len(char const *s, char c, int index)
+static void	ft_free_array(char **array, int array_index)
 {
-	int	len;
+	while (array_index >= 0)
+	{
+		free(array[array_index]);
+		array_index--;
+	}
+	free(array);
+}
+
+static char	*ft_put_word(char const *s, char c, size_t *index)
+{
+	size_t	len;
+	char	*word;
 
 	len = 0;
-	while (s[index] != c && s[index] != '\0')
-	{
+	while (s[*index + len] && s[*index + len] != c)
 		len++;
-		index++;
+	word = (char *)malloc(sizeof(char) * (len + 1));
+	if (!word)
+		return (NULL);
+	ft_strlcpy(word, (s + *index), len + 1);
+	*index += len;
+	return (word);
+}
+
+static int	ft_fill_array(char const *s, char c, char **array)
+{
+	size_t	index;
+	int		array_index;
+
+	index = 0;
+	array_index = 0;
+	while (s[index])
+	{
+		if (s[index] != c)
+		{
+			array[array_index] = ft_put_word(s, c, &index);
+			if (!array[array_index])
+			{
+				ft_free_array(array, array_index - 1);
+				return (0);
+			}
+			array_index++;
+		}
+		else
+			index++;
 	}
-	return (len);
-}
-
-static t_split_params	*ft_init_envs(void)
-{
-	t_split_params	*p;
-
-	p = (t_split_params *)malloc(sizeof(t_split_params));
-	p->word_index = 0;
-	p->arr_index = 0;
-	p->s_index = 0;
-	return (p);
-}
-
-char	**ft_free_envs_and_return_result(t_split_params *p)
-{
-	char	**result;
-
-	result = p->array;
-	free(p);
-	return (result);
+	array[array_index] = NULL;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	t_split_params	*p;
+	int		words;
+	char	**array;
 
-	p = ft_init_envs();
-	p->array = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!p->array)
+	if (!s)
 		return (NULL);
-	while (s[p->s_index] != '\0')
-	{
-		if (s[p->s_index] != c)
-		{
-			p->word_len = sizeof(char) * ft_word_len(s, c, p->s_index) + 1;
-			p->array[p->arr_index] = (char *)malloc(p->word_len);
-			if (!p->array[p->arr_index])
-				return (NULL);
-			while (s[p->s_index] != c && s[p->s_index] != '\0')
-				p->array[p->arr_index][p->word_index++] = s[p->s_index++];
-			p->array[p->arr_index++][p->word_index] = '\0';
-			p->word_index = 0;
-		}
-		else
-			p->s_index++;
-	}
-	p->array[p->arr_index] = NULL;
-	return (ft_free_envs_and_return_result(p));
+	words = ft_count_words(s, c);
+	array = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!array)
+		return (NULL);
+	if (!ft_fill_array(s, c, array))
+		return (NULL);
+	return (array);
 }

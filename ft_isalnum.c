@@ -6,16 +6,13 @@
 /*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:56:49 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/08 20:05:43 by jlacerda         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:50:35 by jlacerda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isalnum(int c)
 {
-	int	isalpha;
-	int	isdigit;
-
-	isalpha = ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
-	isdigit = (c >= 48 && c <= 57);
-	return (isalpha || isdigit);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
