@@ -42,5 +42,5 @@ void ft_calloc_test(void)
     run_test_case(1, SIZE_MAX); // Teste de limite superior
 
     if (all_tests_passed)
-        printf("\t✅ all tests passed for ft_calloc\n");
+        printf("\t✅ ft_calloc\n");
 }

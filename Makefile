@@ -54,7 +54,6 @@ re: fclean all
 .PHONY: all clean fclean re bonus
 
 test:	all
-	$(CC) $(CFLAGS) tests/*.c -L. -lft -o test
+	$(CC) $(CFLAGS) tests/*.c -L. -lft -lbsd -o test
 	./test
 	rm -f test
-	

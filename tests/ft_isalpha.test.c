@@ -38,5 +38,5 @@ void	ft_isalpha_test(void)
 	run_test_case(-42);
 	run_test_case(4242);
 	if (all_tests_passed)
-		printf("\t✅ all tests passed for ft_isalpha\n");
+		printf("\t✅ ft_isalpha\n");
 }

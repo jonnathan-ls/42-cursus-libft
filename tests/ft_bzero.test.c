@@ -41,13 +41,18 @@ void run_test_case(char *s, size_t n)
 void ft_bzero_test(void)
 {
     char s1[] = "test string 1";
-    char s2[] = "another test string";
-    char s3[] = "yet another test";
-
     run_test_case(s1, strlen(s1));
+    char s2[] = "another test string";
     run_test_case(s2, 3);
+    char s3[] = "yet another test";
     run_test_case(s3, 0);
+    // char s4[] = "yet another test";
+    // run_test_case(s4, -1);
+    // char s5[] = "yet another test";
+    // run_test_case(s5, INT_MIN);
+    // char s6[] = "yet another test";
+    // run_test_case(s6, SIZE_MAX);
 
     if (all_tests_passed)
-        printf("\t✅ all tests passed for ft_bzero\n");
+        printf("\t✅ ft_bzero\n");
 }
