@@ -6,7 +6,7 @@
 #    By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 20:44:31 by jlacerda          #+#    #+#              #
-#    Updated: 2024/10/23 20:17:17 by jlacerda         ###   ########.fr        #
+#    Updated: 2024/10/26 19:57:38 by jlacerda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
-
-test:	all
-	$(CC) $(CFLAGS) tests/*.c -L. -lft -lbsd -o test
-	./test
-	rm -f test

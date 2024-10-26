@@ -1,18 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.test.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jlacerda <jlacerda@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 21:45:00 by jlacerda          #+#    #+#             */
-/*   Updated: 2024/10/21 22:00:00 by jlacerda         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "test.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 static bool all_tests_passed = true;
 
